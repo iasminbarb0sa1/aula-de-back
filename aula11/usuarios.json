@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "nome" : "Ana Morais",
+        "idade": 15,
+        "email": "anabeatriz@gmail.com",
+        "salario": 50.300
+    },
+    {
+        "id": 2,
+        "nome" : "Ana Santo",
+        "idade": 20,
+        "email": "abeatriz@gmail.com",
+        "salario": 70.590
+    }
+]
