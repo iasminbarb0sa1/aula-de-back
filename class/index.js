@@ -1,10 +1,12 @@
 //Importandoo arquivo de classe Pessoa 
-import Pessoa from "./Pessoa.js"
+import ContaBancaria from "./ContaBancaria.js"
 
-//instanciando a classe Pessoa
-const pessoa1 = new Pessoa("Ana",15, "1234567890"); //a contante pessoa1 é um objeto
-pessoa1.setNome("Ronaldo"); //definindo o nome
+let saldoInicial = 100000
+const contaBancaria = new ContaBancaria(saldoInicial)
 
-//declarei uma variavelnomePessoa que está recebendo o nome que eu defini
-let nomePessoa = pessoa1.pegarNome()
-console.log(nomePessoa); 
+contaBancaria.depositar(20000)
+let extrato = contaBancaria.getExtrato()
+console.log("Meu saldo é:", extrato);
+
+contaBancaria.sacar(5000);
+console.log("meu saldo é:", contaBancaria.getExtrato())
