@@ -10,18 +10,10 @@
 
 class Carros {
   #velocidade
-  
+  ligado
   constructor() {
     this.#velocidade = 0;
-    this.ligado = 0;
-  }
-  ligar() {
-    if (this.ligado == 0) {
-      this.ligado = 1;
-      return "Carro ligado";
-    } else {
-      return "Carro já está ligado";
-    }
+  
   }
 
    setLigar(){
