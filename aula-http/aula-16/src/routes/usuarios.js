@@ -1,17 +1,11 @@
-const express = require('express');
-const router = express.Router();
-const db = require('../config/db');
+const mysql = require("mysql2/promise"); // Importa o módulo mysql2 com suporte a Promises
 
-//localhost:3000/usuarios
-//ROTA GET -- RETORNA TODOS OS USUÁRIOS
-router.get('/', async (req, res) => {
-    try {
-        const [rows] = await db.query("SELECT id, nome, email FROM usuario");
-        res.json(rows); // retorna a consulta de query
-    } catch (error) {
-        console.log('error:', error); 
-        res.status(500).json({ erro: "erro ao buscar usuarios" });
-    }
+const db = mysql.createPool({
+    host: "localhost",     // endereço do servidor MySQL
+    user: "root",          // seu usuário do banco
+    password: "", // sua senha
+    database: "node_mysql", // nome do banco de dados
 });
 
-module.exports = router; 
+// Exporta o pool de conexões para ser usado em outros arquivos
+module.exports = db;

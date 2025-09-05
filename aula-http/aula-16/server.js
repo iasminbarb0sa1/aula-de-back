@@ -1,20 +1,28 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+// Importa o Express
+const express = require('express'); // Cria uma instância do Express
+const app = express(); // Define a porta do servidor e o endereço onde ele vai rodar
+const PORT = 3000; // Porta onde o servidor vai rodar
 
-const usuarioRoute = require('./src/routes/usuarios');
+const cors = require('cors');
+app.use(cors());
 
+// Permite que o servidor leia dados JSON enviados pelo corpo da requisição
 app.use(express.json());
 
-// Prefixo para as rotas de usuário
-app.use('/usuarios', usuarioRoute);
-
-app.get('/', (req, res) => {
-    res.send("Olá pessoal, estou no navegador");
+// Rota principal (GET) - só para testar
+app.get('/', (req, res) => { 
+  res.send('Olá, mundo!');
 });
 
-app.listen(port, () => {
-    console.log(`servidor rodando na porta ${port}. Abra http://localhost:${port}`);
+// Rota para usuários (GET)
+const usuariosRouter = require('./src/routes/usuarios');
+const db = require('./src/config/db');
+app.use('/usuarios', usuariosRouter);
+
+
+// Inicia o servidor
+app.listen(PORT, () => {
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
-
-
+  
+module.exports = db;
